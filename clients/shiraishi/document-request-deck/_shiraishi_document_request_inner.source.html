@@ -10,8 +10,8 @@
   --sub:#5b6472; --faint:#96a0b0;
   --line:#e5e9f0; --line-2:#eef1f7;
   --accent:#b8963f; --accent-soft:#f2ead2;
-  --f-mincho:"Yu Mincho","YuMincho","Hiragino Mincho ProN","Noto Serif JP",serif;
-  --f-gothic:"Yu Gothic","YuGothic","Hiragino Kaku Gothic ProN","Hiragino Sans","Noto Sans JP","Meiryo",system-ui,sans-serif;
+  --f-mincho:"Yu Mincho","YuMincho","Hiragino Mincho ProN","Noto Serif JP","Noto Serif CJK JP",serif;
+  --f-gothic:"Yu Gothic","YuGothic","Hiragino Kaku Gothic ProN","Hiragino Sans","Noto Sans JP","Noto Sans CJK JP","Meiryo",system-ui,sans-serif;
   --f-mono:"SFMono-Regular","Cascadia Code","Consolas","Roboto Mono",monospace;
 }
 *{box-sizing:border-box;margin:0;padding:0}
@@ -86,18 +86,19 @@ h1.head .gd{color:var(--accent)}
 .card3 p{font-size:1.06cqw;line-height:1.75;color:var(--sub)}
 .card3 .chips{display:flex;flex-wrap:wrap;gap:.6cqw;margin-top:1cqw;padding-top:1cqw;border-top:1px solid var(--line-2)}
 .chip{font-family:var(--f-mono);font-size:.86cqw;color:var(--sub);background:var(--band);border:1px solid var(--line);border-radius:2cqw;padding:.3cqw .9cqw}
-.featrow{display:grid;grid-template-columns:repeat(3,1fr);gap:1.4cqw;margin-top:1.8cqw}
-.featbadge{border:1px solid var(--line);background:var(--band);padding:1.1cqw 1.3cqw;display:flex;align-items:center;gap:1.1cqw;border-radius:2px}
-.featbadge b{font-size:1.12cqw;color:var(--brand);font-weight:700;display:block}
-.featbadge span{font-size:.88cqw;color:var(--sub);display:block;margin-top:.2cqw}
-.s2 .founder{margin-top:2.2cqw;padding-top:1.8cqw;padding-bottom:1.6cqw;border-top:1px solid var(--line);display:flex;gap:2cqw;align-items:center;background:var(--paper-2)}
-.s2 .fkick{font-family:var(--f-mono);font-size:.9cqw;letter-spacing:.22em;text-transform:uppercase;color:var(--faint);display:block;margin-bottom:.6cqw}
-.photo-ph{width:7.6cqw;height:7.6cqw;border-radius:50%;background:var(--band);border:1px dashed var(--faint);display:flex;align-items:center;justify-content:center;flex:0 0 auto;margin-left:.4cqw}
+.card3.compact{padding:1.2cqw 1.5cqw}
+.card3.compact h3{font-size:1.64cqw;margin-top:.4cqw}
+.card3.compact .hr{margin:.55cqw 0}
+.card3.compact p{font-size:.96cqw;line-height:1.6}
+.s2 .whykick{font-family:var(--f-mono);font-size:.9cqw;letter-spacing:.22em;text-transform:uppercase;color:var(--faint);margin:1.8cqw 0 1cqw}
+.s2 .founder{margin-top:1.6cqw;padding-top:1.3cqw;padding-bottom:1.3cqw;border-top:1px solid var(--line);display:flex;gap:1.7cqw;align-items:center}
+.s2 .fkick{font-family:var(--f-mono);font-size:.86cqw;letter-spacing:.2em;text-transform:uppercase;color:var(--faint);display:block;margin-bottom:.4cqw}
+.photo-ph{width:5.6cqw;height:5.6cqw;border-radius:50%;background:var(--band);border:1px dashed var(--faint);display:flex;align-items:center;justify-content:center;flex:0 0 auto}
 .photo-ph .ic{stroke:var(--faint);width:46%;height:46%}
-.s2 .fmeta b{font-family:var(--f-mincho);font-size:1.4cqw;color:var(--brand);display:block}
-.s2 .fmeta span.role{font-size:.94cqw;color:var(--faint)}
-.s2 .fquote{font-size:1.06cqw;line-height:1.85;color:var(--sub);font-style:italic;margin-top:.7cqw;max-width:62cqw}
-.ph-note{font-size:.84cqw;color:var(--faint);font-style:italic;margin-top:.5cqw;display:block}
+.s2 .fmeta b{font-family:var(--f-mincho);font-size:1.2cqw;color:var(--brand);display:inline-block}
+.s2 .fmeta span.role{font-size:.9cqw;color:var(--faint);margin-left:.6cqw}
+.s2 .fquote{font-size:.98cqw;line-height:1.6;color:var(--sub);font-style:italic;margin-top:.4cqw;max-width:74cqw}
+.ph-note{font-size:.8cqw;color:var(--faint);font-style:italic;margin-top:.3cqw;display:block}
 
 /* ============ 03 実績 ============ */
 .subline{display:flex;align-items:baseline;gap:1.5cqw;margin-top:1.1cqw;flex-wrap:wrap}
@@ -281,41 +282,51 @@ h1.head .gd{color:var(--accent)}
     <div class="lead">DXコンサルティング・Lark構築・アプリ開発。三つの力を掛け合わせ、“現場”と“経営”の両方に効くDXを実現します。</div>
     <div class="rule"></div>
     <div class="cards3">
-      <div class="card3">
+      <div class="card3 compact">
         <div><span class="no">01</span><span class="en">DX Consulting</span></div>
         <h3>DXコンサル</h3><div class="hr"></div>
         <p>業務を棚卸しし、費用対効果の高い一手から着手。導入後の定着まで伴走します。</p>
-        <div class="chips"><span class="chip">業務設計</span><span class="chip">定着支援</span></div>
       </div>
-      <div class="card3">
+      <div class="card3 compact">
         <div><span class="no">02</span><span class="en">Lark Construction</span></div>
         <h3>Lark構築</h3><div class="hr"></div>
         <p>チャット・データ・ワークフローをLarkひとつに集約し、情報の分断をなくします。</p>
-        <div class="chips"><span class="chip">Lark</span><span class="chip">ワークフロー</span></div>
       </div>
-      <div class="card3">
+      <div class="card3 compact">
         <div><span class="no">03</span><span class="en">App Development</span></div>
         <h3>アプリ開発</h3><div class="hr"></div>
         <p>既製ツールで届かない業務は、必要な分だけ専用アプリを開発して応えます。</p>
-        <div class="chips"><span class="chip">受発注</span><span class="chip">AI-OCR</span></div>
       </div>
     </div>
-    <div class="featrow">
-      <div class="featbadge"><span class="icwrap"><svg class="ic"><use href="#i-flag"/></svg></span><div><b>現場に強い</b><span>実務のボトルネックを直接ヒアリング</span></div></div>
-      <div class="featbadge"><span class="icwrap"><svg class="ic"><use href="#i-chart"/></svg></span><div><b>経営に強い</b><span>数字で判断できる意思決定基盤づくり</span></div></div>
-      <div class="featbadge"><span class="icwrap"><svg class="ic"><use href="#i-layers"/></svg></span><div><b>充実した開発基盤</b><span>速く・高品質に実装できる自社基盤</span></div></div>
+    <div class="whykick">Why 白石 — 三段論法</div>
+    <div class="cards3">
+      <div class="card3 compact" style="border-top-color:var(--accent)">
+        <div><span class="no">01</span><span class="en">On the floor</span></div>
+        <h3>現場に強い</h3><div class="hr"></div>
+        <p>業務のボトルネックを、現場で直接ヒアリング。机上のDXで終わらせません。</p>
+      </div>
+      <div class="card3 compact">
+        <div><span class="no">02</span><span class="en">For the boardroom</span></div>
+        <h3>経営に強い</h3><div class="hr"></div>
+        <p>数字で判断できる意思決定基盤づくりまで踏み込みます。</p>
+      </div>
+      <div class="card3 compact">
+        <div><span class="no">03</span><span class="en">AI production base</span></div>
+        <h3>充実した開発基盤</h3><div class="hr"></div>
+        <p>属人的な開発ではなく、速く・高品質に作る仕組みで実装します。</p>
+      </div>
     </div>
+    <div class="navband" style="margin-top:1.4cqw">∴ だから株式会社白石は、<b>現場に強いDX</b>を、<b>経営の成果</b>につなげ、<span class="w">速く・高品質</span>に実装できます。</div>
     <div class="founder">
       <div class="photo-ph"><svg class="ic"><use href="#i-user"/></svg></div>
       <div class="fmeta">
         <span class="fkick">Founder's Message — 代表挨拶</span>
-        <b>代表取締役　［氏名］</b>
-        <span class="role">株式会社白石</span>
+        <b>代表取締役　［氏名］</b><span class="role">株式会社白石</span>
         <p class="fquote">［ここに代表からのご挨拶文を入力してください。創業の想い、大切にしていること、これから提供したい価値、今後のビジョンなどを2〜3文でまとめます。］</p>
         <span class="ph-note">※ 代表者写真は左のプレースホルダーに差し替えてください</span>
       </div>
     </div>
-    <div class="foot" style="margin-top:1cqw"><span>株式会社白石</span><span>資料請求資料</span></div>
+    <div class="foot" style="margin-top:.8cqw"><span>株式会社白石</span><span>資料請求資料</span></div>
   </section></div>
 
   <!-- ============ 03 実績紹介 ============ -->
