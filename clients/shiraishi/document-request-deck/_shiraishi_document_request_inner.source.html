@@ -10,7 +10,7 @@
   --sub:#5b6472; --faint:#96a0b0;
   --line:#e5e9f0; --line-2:#eef1f7;
   --accent:#b8963f; --accent-soft:#f2ead2;
-  --f-mincho:"Yu Mincho","YuMincho","Hiragino Mincho ProN","Noto Serif JP","Noto Serif CJK JP",serif;
+  --f-mincho:"Yu Gothic","YuGothic","Hiragino Kaku Gothic ProN","Hiragino Sans","Noto Sans JP","Noto Sans CJK JP","Meiryo",system-ui,sans-serif;
   --f-gothic:"Yu Gothic","YuGothic","Hiragino Kaku Gothic ProN","Hiragino Sans","Noto Sans JP","Noto Sans CJK JP","Meiryo",system-ui,sans-serif;
   --f-mono:"SFMono-Regular","Cascadia Code","Consolas","Roboto Mono",monospace;
 }
@@ -86,12 +86,17 @@ h1.head .gd{color:var(--accent)}
 .card3 p{font-size:1.06cqw;line-height:1.75;color:var(--sub)}
 .card3 .chips{display:flex;flex-wrap:wrap;gap:.6cqw;margin-top:1cqw;padding-top:1cqw;border-top:1px solid var(--line-2)}
 .chip{font-family:var(--f-mono);font-size:.86cqw;color:var(--sub);background:var(--band);border:1px solid var(--line);border-radius:2cqw;padding:.3cqw .9cqw}
-.card3.compact{padding:1.2cqw 1.5cqw}
-.card3.compact h3{font-size:1.64cqw;margin-top:.4cqw}
-.card3.compact .hr{margin:.55cqw 0}
-.card3.compact p{font-size:.96cqw;line-height:1.6}
-.s2 .whykick{font-family:var(--f-mono);font-size:.9cqw;letter-spacing:.22em;text-transform:uppercase;color:var(--faint);margin:1.8cqw 0 1cqw}
-.s2 .founder{margin-top:1.6cqw;padding-top:1.3cqw;padding-bottom:1.3cqw;border-top:1px solid var(--line);display:flex;gap:1.7cqw;align-items:center}
+.s2 .whykick{font-family:var(--f-mono);font-size:.9cqw;letter-spacing:.22em;text-transform:uppercase;color:var(--faint);margin:2cqw 0 1.1cqw;display:flex;align-items:center;gap:1cqw}
+.s2 .whykick::before{content:"";width:1.7cqw;height:.16cqw;background:var(--accent);display:inline-block}
+.whygrid{display:grid;grid-template-columns:repeat(3,1fr);gap:1.8cqw}
+.whycard{border:1px solid var(--line);border-top:3px solid var(--accent);background:var(--paper);padding:1.7cqw 1.8cqw;display:flex;flex-direction:column}
+.whycard.alt{border-top-color:var(--brand)}
+.whycard .wn{font-family:var(--f-gothic);font-size:2.6cqw;font-weight:700;color:var(--accent);line-height:1}
+.whycard.alt .wn{color:var(--brand)}
+.whycard h3{font-family:var(--f-gothic);font-size:1.42cqw;font-weight:700;color:var(--brand);margin-top:.6cqw}
+.whycard .wcap{font-family:var(--f-mono);font-size:.8cqw;letter-spacing:.16em;text-transform:uppercase;color:var(--faint);margin-top:.3cqw}
+.whycard p{font-size:.98cqw;line-height:1.75;color:var(--sub);margin-top:.9cqw}
+.s2 .founder{margin-top:1.8cqw;padding-top:1.3cqw;padding-bottom:1.3cqw;border-top:1px solid var(--line);display:flex;gap:1.7cqw;align-items:center}
 .s2 .fkick{font-family:var(--f-mono);font-size:.86cqw;letter-spacing:.2em;text-transform:uppercase;color:var(--faint);display:block;margin-bottom:.4cqw}
 .photo-ph{width:5.6cqw;height:5.6cqw;border-radius:50%;background:var(--band);border:1px dashed var(--faint);display:flex;align-items:center;justify-content:center;flex:0 0 auto}
 .photo-ph .ic{stroke:var(--faint);width:46%;height:46%}
@@ -114,10 +119,13 @@ h1.head .gd{color:var(--accent)}
 .statpair .to small{font-size:1.2cqw;margin-left:.2cqw;color:var(--accent);font-weight:600}
 .statcard .t{font-size:1.14cqw;color:var(--brand);font-weight:700;margin-top:.8cqw}
 .statcard .d{font-size:.94cqw;color:var(--sub);margin-top:.2cqw}
-.proof{flex:1;border:1px solid var(--line);background:var(--paper-2);padding:2cqw 2.2cqw;display:flex;flex-direction:column;justify-content:center;border-radius:2px}
-.proof .pkick{font-family:var(--f-mono);font-size:.86cqw;letter-spacing:.18em;color:var(--faint);text-transform:uppercase}
-.proof .purl{font-family:var(--f-mono);font-size:1.2cqw;color:var(--brand);font-weight:700;margin-top:.7cqw;word-break:break-all}
-.proof .pnote{font-size:.94cqw;color:var(--sub);margin-top:.7cqw;line-height:1.7}
+.params{flex:1.3;border:1px solid var(--line);background:var(--paper-2);padding:1.5cqw 1.9cqw;border-radius:2px;display:flex;flex-direction:column;justify-content:center}
+.params .pkick{font-family:var(--f-mono);font-size:.82cqw;letter-spacing:.16em;color:var(--faint);text-transform:uppercase;margin-bottom:.9cqw}
+.paramlist{display:flex;flex-direction:column;gap:.6cqw}
+.paramitem{display:flex;align-items:flex-start;gap:.9cqw}
+.paramitem .pnum{width:1.6cqw;height:1.6cqw;border-radius:50%;background:var(--brand);color:#fff;font-family:var(--f-mono);font-size:.8cqw;font-weight:700;display:flex;align-items:center;justify-content:center;flex:0 0 auto;margin-top:.1cqw}
+.paramitem b{display:block;font-size:.98cqw;color:var(--brand);font-weight:700}
+.paramitem span{display:block;font-size:.84cqw;color:var(--sub);margin-top:.15cqw;line-height:1.55}
 .s3 .closing{margin-top:1.8cqw;font-size:1.02cqw;color:var(--sub);line-height:1.8}
 .s3 .closing b{color:var(--brand);font-weight:700}
 .mechhead{font-family:var(--f-mono);font-size:.94cqw;letter-spacing:.22em;color:var(--faint);margin:2.6cqw 0 1.2cqw}
@@ -175,6 +183,11 @@ h1.head .gd{color:var(--accent)}
 .pillarstrip .ps span{display:block;font-size:.86cqw;color:var(--sub);margin-top:.2cqw}
 .capchips{display:flex;flex-wrap:wrap;gap:.7cqw;margin-top:1.8cqw;align-items:center}
 .capchips .cclabel{font-family:var(--f-mono);font-size:.86cqw;letter-spacing:.14em;color:var(--faint);margin-right:.4cqw}
+.subbadge{align-self:flex-start;display:inline-flex;align-items:center;gap:.5cqw;background:var(--accent-soft);border:1px solid var(--accent);color:var(--brand);font-family:var(--f-mono);font-size:.82cqw;letter-spacing:.06em;padding:.45cqw 1.1cqw;border-radius:2cqw;font-weight:700}
+.scoperow{display:grid;grid-template-columns:repeat(3,1fr);gap:1.6cqw;margin-top:1.8cqw}
+.scope{border-left:.22cqw solid var(--accent);padding-left:1.1cqw}
+.scope b{display:block;font-size:1.04cqw;color:var(--brand);font-weight:700}
+.scope span{display:block;font-size:.9cqw;color:var(--sub);margin-top:.3cqw;line-height:1.65}
 
 /* ============ 06 会社情報 & Next ============ */
 .s6 .cols{display:grid;grid-template-columns:1.15fr auto 1fr;gap:3cqw;margin-top:1.2cqw;margin-bottom:2.6cqw}
@@ -281,42 +294,33 @@ h1.head .gd{color:var(--accent)}
     <h1 class="head" style="margin-top:1cqw">現場の“当たり前”を、次の一手に変える。</h1>
     <div class="lead">DXコンサルティング・Lark構築・アプリ開発。三つの力を掛け合わせ、“現場”と“経営”の両方に効くDXを実現します。</div>
     <div class="rule"></div>
-    <div class="cards3">
-      <div class="card3 compact">
-        <div><span class="no">01</span><span class="en">DX Consulting</span></div>
-        <h3>DXコンサル</h3><div class="hr"></div>
-        <p>業務を棚卸しし、費用対効果の高い一手から着手。導入後の定着まで伴走します。</p>
-      </div>
-      <div class="card3 compact">
-        <div><span class="no">02</span><span class="en">Lark Construction</span></div>
-        <h3>Lark構築</h3><div class="hr"></div>
-        <p>チャット・データ・ワークフローをLarkひとつに集約し、情報の分断をなくします。</p>
-      </div>
-      <div class="card3 compact">
-        <div><span class="no">03</span><span class="en">App Development</span></div>
-        <h3>アプリ開発</h3><div class="hr"></div>
-        <p>既製ツールで届かない業務は、必要な分だけ専用アプリを開発して応えます。</p>
-      </div>
+    <div class="pillarstrip">
+      <div class="ps"><span class="icwrap"><svg class="ic"><use href="#i-briefcase"/></svg></span><div><b>DXコンサル</b><span>業務の棚卸しから定着まで伴走</span></div></div>
+      <div class="ps"><span class="icwrap"><svg class="ic"><use href="#i-chat"/></svg></span><div><b>Lark構築</b><span>情報をLarkひとつに集約</span></div></div>
+      <div class="ps"><span class="icwrap"><svg class="ic"><use href="#i-code"/></svg></span><div><b>アプリ開発</b><span>必要な分だけ専用実装</span></div></div>
     </div>
-    <div class="whykick">Why 白石 — 三段論法</div>
-    <div class="cards3">
-      <div class="card3 compact" style="border-top-color:var(--accent)">
-        <div><span class="no">01</span><span class="en">On the floor</span></div>
-        <h3>現場に強い</h3><div class="hr"></div>
+    <div class="whykick">WHY 白石 — 三段論法</div>
+    <div class="whygrid">
+      <div class="whycard">
+        <span class="wn">01</span>
+        <h3>現場に強い</h3>
+        <span class="wcap">ON THE FLOOR</span>
         <p>業務のボトルネックを、現場で直接ヒアリング。机上のDXで終わらせません。</p>
       </div>
-      <div class="card3 compact">
-        <div><span class="no">02</span><span class="en">For the boardroom</span></div>
-        <h3>経営に強い</h3><div class="hr"></div>
+      <div class="whycard alt">
+        <span class="wn">02</span>
+        <h3>経営に強い</h3>
+        <span class="wcap">FOR THE BOARDROOM</span>
         <p>数字で判断できる意思決定基盤づくりまで踏み込みます。</p>
       </div>
-      <div class="card3 compact">
-        <div><span class="no">03</span><span class="en">AI production base</span></div>
-        <h3>充実した開発基盤</h3><div class="hr"></div>
+      <div class="whycard alt">
+        <span class="wn">03</span>
+        <h3>充実した開発基盤</h3>
+        <span class="wcap">PRODUCTION BASE</span>
         <p>属人的な開発ではなく、速く・高品質に作る仕組みで実装します。</p>
       </div>
     </div>
-    <div class="navband" style="margin-top:1.4cqw">∴ だから株式会社白石は、<b>現場に強いDX</b>を、<b>経営の成果</b>につなげ、<span class="w">速く・高品質</span>に実装できます。</div>
+    <div class="navband" style="margin-top:1.6cqw">∴ だから株式会社白石は、<b>現場に強いDX</b>を、<b>経営の成果</b>につなげ、<span class="w">速く・高品質</span>に実装できます。</div>
     <div class="founder">
       <div class="photo-ph"><svg class="ic"><use href="#i-user"/></svg></div>
       <div class="fmeta">
@@ -340,20 +344,23 @@ h1.head .gd{color:var(--accent)}
         <span class="t">月次シフト表の作成時間</span>
         <span class="d">Larkで構築したシフト管理アプリにより実現</span>
       </div>
-      <div class="proof">
-        <span class="pkick">LIVE DEMO — 実際の画面はこちら</span>
-        <span class="purl">https://safday.vercel.app/</span>
-        <span class="pnote">上記URLから、実際に稼働しているシフト管理アプリをご確認いただけます。</span>
+      <div class="params">
+        <span class="pkick">AUTO-ASSIGN — 3つの条件で自動振り分け</span>
+        <div class="paramlist">
+          <div class="paramitem"><span class="pnum">1</span><div><b>社内資格（スキルマップ）</b><span>対応できる業務・役割を資格ごとに管理</span></div></div>
+          <div class="paramitem"><span class="pnum">2</span><div><b>希望休シフト</b><span>本人の休み希望を反映</span></div></div>
+          <div class="paramitem"><span class="pnum">3</span><div><b>セクションローテーション</b><span>1〜2時間ごとに役割を交代（バックオフィス→窓口対応→巡回警備）</span></div></div>
+        </div>
       </div>
     </div>
-    <div class="closing"><b>単なる時短ではありません。</b>　属人化していたシフト作成を、誰でも回せる仕組みに変える ― これが、私たちが最も得意とする領域です。</div>
+    <div class="closing"><b>単なる時短ではありません。</b>　資格・希望休・ローテーションという複雑な条件を、誰でも扱える仕組みに変える ― これが、私たちが最も得意とする領域です。</div>
     <div class="mechhead">HOW IT WORKS — 導入の仕組み</div>
     <div class="mechrow">
-      <div class="mech"><span class="mn">STEP 01</span><b>テンプレート化</b><span class="d">シフトのパターンをLark上にテンプレート登録</span></div>
+      <div class="mech"><span class="mn">STEP 01</span><b>条件を登録</b><span class="d">資格・希望休・ローテーション順をLarkに登録</span></div>
       <div class="mecharrow">→</div>
-      <div class="mech"><span class="mn">STEP 02</span><b>チャットで入力</b><span class="d">現場からの希望・条件をチャットで送信</span></div>
+      <div class="mech"><span class="mn">STEP 02</span><b>自動で組み合わせ計算</b><span class="d">全員分の条件を満たす配置をLarkが自動算出</span></div>
       <div class="mecharrow">→</div>
-      <div class="mech"><span class="mn">STEP 03</span><b>自動で反映</b><span class="d">入力内容が自動集計され、シフト表に反映</span></div>
+      <div class="mech"><span class="mn">STEP 03</span><b>シフト表として出力</b><span class="d">誰が見ても分かる形で共有・確定</span></div>
     </div>
     <div class="applyhead">ALSO APPLICABLE TO — 同じ考え方が活きる業務例</div>
     <div class="applyrow">
@@ -366,38 +373,44 @@ h1.head .gd{color:var(--accent)}
 
   <!-- ============ 04 Lark導入シミュレーション ============ -->
   <div class="slide-wrap"><section class="slide s4">
-    <div class="chrome"><span class="kick">Lark simulation — Lark導入効果シミュレーション</span><span class="pg"><b>04</b> — 06</span></div>
-    <h1 class="head" style="margin-top:1.6cqw">実例をもとに、<span class="gd">Lark導入の効果</span>を試算します。</h1>
-    <div class="lead">施設警備会社様での実績をもとに、貴社の業務量に合わせた改善額をご案内します。</div>
+    <div class="chrome"><span class="kick">Lark implementation — 最高のLark導入</span><span class="pg"><b>04</b> — 06</span></div>
+    <h1 class="head" style="margin-top:1.6cqw">複雑な条件も、<span class="gd">Larkなら“仕組み”</span>にできる。</h1>
+    <div class="lead">資格・希望休・ローテーションのように、人の頭で組み合わせるしかなかった条件も、Lark上のワークフローとして自動化します。</div>
     <div class="caseband">
-      <span class="icwrap accent"><svg class="ic"><use href="#i-clock"/></svg></span>
-      <div><b>実績：施設警備会社様（シフト調整業務）</b><span>3日間 → 5分に短縮（P3実績紹介を参照）</span></div>
+      <span class="icwrap accent"><svg class="ic"><use href="#i-shield"/></svg></span>
+      <div><b>実績：施設警備会社様（シフト調整業務）</b><span>資格・希望休・ローテーションの3条件を自動振り分け（詳細はP3実績紹介）</span></div>
     </div>
-    <div class="simpoints">
-      <div class="simpoint"><span class="icwrap ghost"><svg class="ic"><use href="#i-doc"/></svg></span><p><b>転記作業の削減</b>情報をLarkに一元化し、二重入力・転記の手間をなくします。</p></div>
-      <div class="simpoint"><span class="icwrap ghost"><svg class="ic"><use href="#i-chat"/></svg></span><p><b>承認の即時化</b>チャット完結の承認フローで、意思決定のスピードを高めます。</p></div>
-      <div class="simpoint"><span class="icwrap ghost"><svg class="ic"><use href="#i-shield"/></svg></span><p><b>ヒューマンエラー減</b>案件・顧客情報をリアルタイム共有し、抜け漏れを防ぎます。</p></div>
+    <div class="applyhead" style="margin-top:2.2cqw">ALSO APPLICABLE TO — 同じ仕組みが活きる業務</div>
+    <div class="applyrow">
+      <div class="card3"><div class="ptop"><span class="icwrap ghost"><svg class="ic"><use href="#i-user"/></svg></span><h4>人員配置の最適化</h4></div><p>スキル・勤務条件など複数の制約を踏まえ、最適な配置を自動で算出。</p></div>
+      <div class="card3"><div class="ptop"><span class="icwrap ghost"><svg class="ic"><use href="#i-chat"/></svg></span><h4>承認ルーティング</h4></div><p>金額・部署・案件種別に応じて、承認者を自動で振り分け。</p></div>
+      <div class="card3"><div class="ptop"><span class="icwrap ghost"><svg class="ic"><use href="#i-bell"/></svg></span><h4>発注条件の自動判定</h4></div><p>在庫水準・納期・仕入先条件から、発注の要否を自動判定。</p></div>
+    </div>
+    <div class="simpoints" style="margin-top:2.2cqw">
+      <div class="simpoint"><span class="icwrap ghost"><svg class="ic"><use href="#i-doc"/></svg></span><p><b>転記作業の削減</b>条件をLarkに一元登録し、Excelや紙への転記をなくします。</p></div>
+      <div class="simpoint"><span class="icwrap ghost"><svg class="ic"><use href="#i-chat"/></svg></span><p><b>調整の即時化</b>希望や条件の変更も、チャットで送るだけで反映されます。</p></div>
+      <div class="simpoint"><span class="icwrap ghost"><svg class="ic"><use href="#i-shield"/></svg></span><p><b>属人化の解消</b>担当者の頭の中にあったルールを、誰でも扱える仕組みに。</p></div>
     </div>
     <div class="assume">
-      <div class="ahead">SIMULATION BASIS — 算出の考え方</div>
+      <div class="ahead">HOW WE BUILD IT — 導入の進め方</div>
       <ul>
-        <li><b>対象業務：</b>シフト調整と同様の、日々の集計・確認・承認にかかる時間</li>
-        <li><b>算出方法：</b>作業時間の削減分 × 人件費単価で試算</li>
-        <li><b>前提条件：</b>貴社の人員数・業務フローをヒアリングして設定</li>
+        <li><b>条件の洗い出し：</b>現場が実際に守っているルールをヒアリング</li>
+        <li><b>ワークフロー設計：</b>条件をLark上のルールとして構築</li>
+        <li><b>運用テスト：</b>現場で試し、精度を確認しながら本稼働へ</li>
       </ul>
     </div>
     <div class="yourcase">
-      <div><b>貴社の場合の改善額は？</b><span>業務内容・体制をヒアリングのうえ、個別に算出します。</span></div>
-      <div class="yc-r">お打ち合わせで算出</div>
+      <div><b>貴社の複雑な条件も、仕組み化できます</b><span>業務内容・ルールをヒアリングのうえ、個別にご提案します。</span></div>
+      <div class="yc-r">お打ち合わせでご相談</div>
     </div>
-    <div class="disc">※ 上記の実績（3日間→5分）は、実際の導入事例に基づく数値です。貴社への改善額は、業務量・体制に応じて個別に算出します。</div>
     <div class="foot"><span>株式会社白石</span><span>資料請求資料</span></div>
   </section></div>
 
   <!-- ============ 05 DXOneの紹介 ============ -->
   <div class="slide-wrap"><section class="slide s5">
     <div class="chrome"><span class="kick">Our solution — DXOneの紹介</span><span class="pg"><b>05</b> — 06</span></div>
-    <h1 class="head" style="margin-top:1.6cqw">バックオフィスを、<span class="gd">“もう一人のAI社員”</span>に。</h1>
+    <span class="subbadge" style="margin-top:1.5cqw">デジタル化・AI導入補助金2026　対象ツール登録済み</span>
+    <h1 class="head" style="margin-top:.9cqw">バックオフィスを、<span class="gd">“もう一人のAI社員”</span>に。</h1>
     <div class="lead">一人に付くAIアシスタントではありません。会社の中で働き、仕事を人から人へ渡す“もう一人の社員”です。生成AI・AI-OCRを搭載した統合業務基盤「中小企業DX One」を、Lark基盤の上に構築します。</div>
     <div class="aicompare">
       <div class="aic no">
@@ -424,12 +437,13 @@ h1.head .gd{color:var(--accent)}
       <div class="ps"><span class="icwrap"><svg class="ic"><use href="#i-db"/></svg></span><div><b>DATA ― 業務データ基盤</b><span>41表で顧客・売上・人事を一元管理</span></div></div>
       <div class="ps"><span class="icwrap"><svg class="ic"><use href="#i-shield"/></svg></span><div><b>SAFETY ― 安全のしくみ</b><span>人の承認を経て実行、記録が残る</span></div></div>
     </div>
-    <div class="capchips">
-      <span class="cclabel">できること：</span>
-      <span class="chip">チャット起票</span><span class="chip">議事録の要約</span><span class="chip">領収書のAI-OCR読取</span><span class="chip">期限・確認待ちの通知</span>
+    <div class="scoperow">
+      <div class="scope"><b>営業・販売支援</b><span>顧客管理・案件進捗・見積受注請求</span></div>
+      <div class="scope"><b>総務・人事・労務</b><span>社員情報・入退社手続き・勤怠の記録集計</span></div>
+      <div class="scope"><b>業務横断・基盤</b><span>タスク・議事録・稟議・経費・ダッシュボード</span></div>
     </div>
-    <div class="navband" style="margin-top:2.4cqw">DX Oneは、個人に付く<b>“アシスタント”</b>ではなく、会社の中で働く<span class="w">“社員”</span>。<br>だから、仕事が個人に閉じず、<b>会社の資産</b>として積み上がっていきます。</div>
-    <div class="disc" style="margin-top:1.4cqw">※ 料金・補助金の活用については個別にご案内します。「中小企業DX One」は株式会社ユニクス提供・合同会社みやび開発の製品です。白石ではLark構築とあわせた導入・運用をご支援します。</div>
+    <div class="navband" style="margin-top:1.8cqw">DX Oneは、個人に付く<b>“アシスタント”</b>ではなく、会社の中で働く<span class="w">“社員”</span>。<br>だから、仕事が個人に閉じず、<b>会社の資産</b>として積み上がっていきます。</div>
+    <div class="disc" style="margin-top:1.2cqw">※ 料金・補助金の活用については個別にご案内します。「中小企業DX One」は株式会社ユニクス提供・合同会社みやび開発の製品です。白石ではLark構築とあわせた導入・運用をご支援します。</div>
     <div class="foot"><span>株式会社白石</span><span>資料請求資料</span></div>
   </section></div>
 
