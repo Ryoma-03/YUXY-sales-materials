@@ -1,0 +1,512 @@
+<style>
+/* =========================================================================
+   株式会社白石 資料請求資料（A4横・6ページ）
+   ベース：株式会社YUXY 営業提案テンプレート（配色トークン・A4横固定・拡縮JSを踏襲）
+   差し替えは ［ ］ のプレースホルダーのみ。配色=白×紺×金
+   ========================================================================= */
+:root{
+  --paper:#ffffff; --paper-2:#fbfcfd; --band:#f4f6fa;
+  --ink:#20283a; --brand:#1e3a6b; --brand-2:#31599c; --band-dark:#142a52;
+  --sub:#5b6472; --faint:#96a0b0;
+  --line:#e5e9f0; --line-2:#eef1f7;
+  --accent:#b8963f; --accent-soft:#f2ead2;
+  --f-mincho:"Yu Mincho","YuMincho","Hiragino Mincho ProN","Noto Serif JP",serif;
+  --f-gothic:"Yu Gothic","YuGothic","Hiragino Kaku Gothic ProN","Hiragino Sans","Noto Sans JP","Meiryo",system-ui,sans-serif;
+  --f-mono:"SFMono-Regular","Cascadia Code","Consolas","Roboto Mono",monospace;
+}
+*{box-sizing:border-box;margin:0;padding:0}
+.deck{background:#e9ecf1;min-height:100%;padding:3vw 0 4vw;display:flex;flex-direction:column;align-items:center;gap:2.6vw;font-family:var(--f-gothic)}
+
+/* レスポンシブ：A4横 1122×794 の固定デザインを JS で拡縮（どの画面でも不変） */
+.slide-wrap{width:min(94vw,1180px);margin:0 auto;overflow:hidden;border-radius:4px;
+  box-shadow:0 16px 40px -14px rgba(30,58,107,.2), 0 0 0 1px var(--line)}
+.slide{position:relative;overflow:hidden;width:1122px;height:794px;
+  container-type:inline-size;transform-origin:top left;
+  background:var(--paper);color:var(--ink);
+  --pad:7.2cqw; font-size:1.32cqw;line-height:1.8;letter-spacing:.01em;
+  display:flex;flex-direction:column;padding:5.2cqw var(--pad) 3.4cqw;isolation:isolate}
+.slide>*{position:relative;z-index:1}
+
+/* 共通クローム */
+.chrome{display:flex;justify-content:space-between;align-items:baseline;gap:2cqw}
+.kick{font-family:var(--f-mono);font-size:1.02cqw;letter-spacing:.26em;text-transform:uppercase;color:var(--faint);white-space:nowrap;display:flex;align-items:center;gap:1cqw}
+.kick::before{content:"";width:1.7cqw;height:.2cqw;background:var(--accent);display:inline-block}
+.pg{font-family:var(--f-mono);font-size:1.02cqw;letter-spacing:.22em;color:var(--faint)}
+.pg b{color:var(--brand)}
+.subkick{font-family:var(--f-mono);font-size:.94cqw;letter-spacing:.2em;color:var(--faint);margin-top:.7cqw}
+.foot{margin-top:auto;display:flex;justify-content:space-between;align-items:center;padding-top:1.2cqw;border-top:1px solid var(--line-2);
+  font-family:var(--f-mono);font-size:.9cqw;letter-spacing:.16em;color:var(--faint)}
+h1.head{font-family:var(--f-mincho);font-weight:600;font-size:3.6cqw;line-height:1.34;letter-spacing:.03em;color:var(--brand);text-wrap:balance}
+h1.head .gd{color:var(--accent)}
+.lead{font-size:1.34cqw;line-height:1.75;color:var(--sub);margin-top:1cqw}
+.rule{height:2px;background:var(--brand);margin:1.8cqw 0}
+/* 紺の締め帯 */
+.navband{background:var(--brand);color:#e8eef7;padding:1.5cqw 2.4cqw;text-align:center;font-size:1.32cqw;line-height:1.9;border-radius:2px}
+.navband b{color:var(--accent);font-weight:700}
+.navband .w{color:#fff;font-weight:700}
+
+/* ============ アイコン（スプライト方式） ============ */
+.icwrap{width:2.4cqw;height:2.4cqw;min-width:22px;min-height:22px;border-radius:50%;background:var(--brand);display:inline-flex;align-items:center;justify-content:center;flex:0 0 auto}
+.icwrap.accent{background:var(--accent)}
+.icwrap.ghost{background:var(--band);border:1px solid var(--line)}
+.ic{width:52%;height:52%;stroke:#fff;fill:none;stroke-width:2;stroke-linecap:round;stroke-linejoin:round}
+.icwrap.ghost .ic{stroke:var(--brand)}
+
+/* ============ 01 表紙 ============ */
+.s1{padding-top:0}
+.s1 .topbar{position:absolute;left:0;right:0;top:0;height:.75cqw;z-index:3;
+  background:linear-gradient(90deg,var(--accent) 0 16%, var(--brand) 16% 100%)}
+.s1 .inner{display:flex;flex-direction:column;height:100%;padding-top:5.2cqw}
+.s1 .plabel{font-family:var(--f-mono);font-size:1.05cqw;letter-spacing:.24em;color:var(--faint)}
+.s1 .hero{font-family:var(--f-mincho);font-weight:600;font-size:5.4cqw;line-height:1.42;letter-spacing:.04em;color:var(--brand);margin-top:4cqw}
+.s1 .hero .gd{color:var(--accent)}
+.s1 .grule{width:14cqw;height:2px;background:var(--accent);margin:2.8cqw 0 2.4cqw}
+.s1 .sub{font-size:1.4cqw;color:var(--sub)}
+.s1 .hook{font-size:1.56cqw;color:var(--ink);font-weight:700;margin-top:1.2cqw}
+.s1 .hook .gd{color:var(--accent)}
+.s1 .pillrow{display:flex;gap:1.6cqw;margin-top:3.6cqw}
+.s1 .pill{border:1px solid var(--line);background:var(--paper-2);padding:1.3cqw 1.8cqw;display:flex;align-items:center;gap:1.1cqw;border-radius:2px}
+.s1 .pill b{font-size:1.16cqw;color:var(--brand);display:block}
+.s1 .pill span{font-size:.9cqw;color:var(--sub);display:block;margin-top:.15cqw}
+.s1 .glow{position:absolute;right:-8cqw;bottom:-14cqw;width:38cqw;height:38cqw;border-radius:50%;
+  background:radial-gradient(circle, var(--accent-soft) 0%, rgba(242,234,210,0) 70%);pointer-events:none}
+.s1 .btm{margin-top:auto;border-top:1px solid var(--line);padding-top:1.8cqw;display:flex;justify-content:space-between;align-items:flex-end}
+.s1 .to{font-size:1.24cqw;color:var(--brand);font-weight:700;line-height:2}
+.s1 .to .from{display:block;color:var(--ink);font-weight:400;font-size:1.06cqw}
+.s1 .to .date{display:block;font-family:var(--f-mono);font-size:.94cqw;color:var(--faint);font-weight:400;letter-spacing:.1em}
+.logo{font-family:var(--f-mincho);font-size:3cqw;font-weight:600;color:var(--brand);letter-spacing:.22em;text-align:right}
+.logo small{display:block;font-family:var(--f-mono);font-size:.5cqw;letter-spacing:.14em;color:var(--faint);font-weight:400;margin-top:.6cqw}
+
+/* ============ 02 事業紹介・代表挨拶 ============ */
+.cards3{display:grid;grid-template-columns:repeat(3,1fr);gap:2.2cqw}
+.card3{border:1px solid var(--line);border-top:.3cqw solid var(--brand);background:var(--paper-2);padding:1.6cqw 1.7cqw;display:flex;flex-direction:column}
+.card3 .no{font-family:var(--f-mono);font-size:1.3cqw;font-weight:700;color:var(--accent);letter-spacing:.1em}
+.card3 .en{font-family:var(--f-mono);font-size:.86cqw;letter-spacing:.2em;text-transform:uppercase;color:var(--faint);margin-left:.9cqw}
+.card3 h3{font-family:var(--f-mincho);font-size:2.1cqw;font-weight:600;color:var(--brand);letter-spacing:.02em;margin-top:.7cqw}
+.card3 .hr{width:3.4cqw;height:2px;background:var(--accent);margin:.9cqw 0}
+.card3 p{font-size:1.06cqw;line-height:1.75;color:var(--sub)}
+.card3 .chips{display:flex;flex-wrap:wrap;gap:.6cqw;margin-top:1cqw;padding-top:1cqw;border-top:1px solid var(--line-2)}
+.chip{font-family:var(--f-mono);font-size:.86cqw;color:var(--sub);background:var(--band);border:1px solid var(--line);border-radius:2cqw;padding:.3cqw .9cqw}
+.featrow{display:grid;grid-template-columns:repeat(3,1fr);gap:1.4cqw;margin-top:1.8cqw}
+.featbadge{border:1px solid var(--line);background:var(--band);padding:1.1cqw 1.3cqw;display:flex;align-items:center;gap:1.1cqw;border-radius:2px}
+.featbadge b{font-size:1.12cqw;color:var(--brand);font-weight:700;display:block}
+.featbadge span{font-size:.88cqw;color:var(--sub);display:block;margin-top:.2cqw}
+.s2 .founder{margin-top:2.2cqw;padding-top:1.8cqw;padding-bottom:1.6cqw;border-top:1px solid var(--line);display:flex;gap:2cqw;align-items:center;background:var(--paper-2)}
+.s2 .fkick{font-family:var(--f-mono);font-size:.9cqw;letter-spacing:.22em;text-transform:uppercase;color:var(--faint);display:block;margin-bottom:.6cqw}
+.photo-ph{width:7.6cqw;height:7.6cqw;border-radius:50%;background:var(--band);border:1px dashed var(--faint);display:flex;align-items:center;justify-content:center;flex:0 0 auto;margin-left:.4cqw}
+.photo-ph .ic{stroke:var(--faint);width:46%;height:46%}
+.s2 .fmeta b{font-family:var(--f-mincho);font-size:1.4cqw;color:var(--brand);display:block}
+.s2 .fmeta span.role{font-size:.94cqw;color:var(--faint)}
+.s2 .fquote{font-size:1.06cqw;line-height:1.85;color:var(--sub);font-style:italic;margin-top:.7cqw;max-width:62cqw}
+.ph-note{font-size:.84cqw;color:var(--faint);font-style:italic;margin-top:.5cqw;display:block}
+
+/* ============ 03 実績 ============ */
+.subline{display:flex;align-items:baseline;gap:1.5cqw;margin-top:1.1cqw;flex-wrap:wrap}
+.subline b{font-size:1.2cqw;color:var(--brand);font-weight:700}
+.subline span{font-size:1.14cqw;color:var(--sub)}
+.herokpi{display:flex;gap:2.2cqw;align-items:stretch;margin-top:2.6cqw}
+.herokpi .box{border:1px solid var(--accent);background:var(--accent-soft);padding:2cqw 2.6cqw;display:flex;flex-direction:column;justify-content:center;border-radius:2px}
+.herokpi .box .v{font-family:var(--f-mincho);font-size:5.2cqw;color:var(--brand);font-weight:600;line-height:1}
+.herokpi .box .v small{font-size:1.3cqw;margin-left:.3cqw;font-weight:600;color:var(--accent)}
+.herokpi .box .t{font-size:1.14cqw;color:var(--brand);font-weight:700;margin-top:.6cqw}
+.herokpi .box .d{font-size:.94cqw;color:var(--sub);margin-top:.2cqw}
+.herokpi .side{flex:1;display:flex;flex-direction:column;justify-content:center;gap:.8cqw}
+.chghead{font-family:var(--f-mono);font-size:.94cqw;letter-spacing:.22em;color:var(--faint);margin-bottom:.6cqw}
+.bahead,.barow{display:grid;grid-template-columns:11cqw 1fr 4cqw 1fr;gap:1cqw;align-items:stretch}
+.bahead{font-family:var(--f-mono);font-size:.84cqw;letter-spacing:.16em;text-transform:uppercase;color:var(--faint);margin-bottom:.6cqw}
+.barow{margin-bottom:1.2cqw}
+.barow .item{font-size:1.06cqw;color:var(--brand);font-weight:700;display:flex;align-items:center;background:var(--band);padding:1.1cqw 1.1cqw;border-radius:2px}
+.barow .bef{border:1px solid var(--line);background:var(--paper);padding:1.1cqw 1.2cqw;font-size:1.02cqw;color:var(--sub);font-style:italic;display:flex;align-items:center;border-radius:2px}
+.barow .ar{display:flex;align-items:center;justify-content:center;color:var(--accent);font-family:var(--f-mono);font-size:1.5cqw}
+.barow .aft{background:var(--brand);color:#fff;padding:1.1cqw 1.2cqw;font-size:1.02cqw;font-weight:700;display:flex;align-items:center;border-radius:2px}
+.s3 .closing{margin-top:1.8cqw;font-size:1.02cqw;color:var(--sub);line-height:1.8}
+.s3 .closing b{color:var(--brand);font-weight:700}
+.mechhead{font-family:var(--f-mono);font-size:.94cqw;letter-spacing:.22em;color:var(--faint);margin:2.6cqw 0 1.2cqw}
+.mechrow{display:grid;grid-template-columns:1fr 2.4cqw 1fr 2.4cqw 1fr;align-items:stretch}
+.mech{border-left:.24cqw solid var(--accent);padding:.1cqw 0 .1cqw 1.2cqw}
+.mech .mn{font-family:var(--f-mono);font-size:.8cqw;letter-spacing:.2em;color:var(--faint);display:block}
+.mech b{display:block;font-size:1.16cqw;color:var(--brand);font-weight:700;margin-top:.3cqw}
+.mech span.d{display:block;font-size:.94cqw;color:var(--sub);margin-top:.3cqw;line-height:1.6}
+.mecharrow{display:flex;align-items:center;justify-content:center;color:var(--accent);font-family:var(--f-mono);font-size:1.4cqw}
+.applyhead{font-family:var(--f-mono);font-size:.94cqw;letter-spacing:.22em;color:var(--faint);margin:3cqw 0 1.2cqw}
+.applyrow{display:grid;grid-template-columns:repeat(3,1fr);gap:1.6cqw}
+.applyrow .card3{padding:1.4cqw 1.6cqw}
+.applyrow .card3 .ptop{display:flex;align-items:center;gap:1cqw;margin-bottom:.7cqw}
+.applyrow .card3 h4{font-family:var(--f-mincho);font-size:1.24cqw;color:var(--brand);font-weight:600}
+.applyrow .card3 p{font-size:.94cqw;color:var(--sub);line-height:1.65}
+
+/* ============ 04 Larkシミュレーション ============ */
+.simtable{margin-top:2cqw;border:1px solid var(--line);border-radius:2px;overflow:hidden}
+.simhead,.simrow{display:grid;grid-template-columns:1.3fr 1fr 1.6fr}
+.simhead{background:var(--brand);color:#fff}
+.simhead span{font-family:var(--f-mono);font-size:.88cqw;letter-spacing:.14em;padding:.9cqw 1.4cqw}
+.simrow{border-top:1px solid var(--line)}
+.simrow.now{background:var(--accent-soft)}
+.simrow span{font-size:1.06cqw;padding:1.15cqw 1.4cqw;color:var(--ink);display:flex;align-items:center}
+.simrow span.ph{color:var(--faint);font-style:italic}
+.simrow span:first-child{color:var(--brand);font-weight:700}
+.simpoints{display:grid;grid-template-columns:repeat(3,1fr);gap:1.6cqw;margin-top:2.2cqw}
+.simpoint{display:flex;gap:1cqw;align-items:flex-start}
+.simpoint p{font-size:.98cqw;color:var(--sub);line-height:1.7}
+.simpoint b{display:block;color:var(--brand);font-size:1.06cqw;margin-bottom:.2cqw}
+.assume{margin-top:2.4cqw;border:1px solid var(--line);background:var(--band);padding:1.6cqw 1.8cqw;border-radius:2px}
+.assume .ahead{font-family:var(--f-mono);font-size:.88cqw;letter-spacing:.18em;color:var(--faint);margin-bottom:1cqw}
+.assume ul{list-style:none;display:grid;grid-template-columns:repeat(3,1fr);gap:1.4cqw}
+.assume li{font-size:.98cqw;color:var(--sub);line-height:1.7;padding-left:1.1cqw;position:relative}
+.assume li::before{content:"";position:absolute;left:0;top:.65cqw;width:.5cqw;height:.5cqw;background:var(--accent);border-radius:50%}
+.assume li b{color:var(--brand);font-weight:700}
+.disc{font-size:.9cqw;color:var(--faint);margin-top:1.6cqw;line-height:1.7}
+
+/* ============ 05 DXOne ============ */
+.s5 .lead{max-width:88%}
+.pillargrid{display:grid;grid-template-columns:repeat(3,1fr);gap:2cqw;margin-top:2cqw}
+.pillar{border:1px solid var(--line);background:var(--paper-2);padding:1.6cqw 1.7cqw;display:flex;flex-direction:column;gap:.9cqw}
+.pillar .ptop{display:flex;align-items:center;gap:1cqw}
+.pillar .en{font-family:var(--f-mono);font-size:.86cqw;letter-spacing:.2em;color:var(--accent)}
+.pillar h3{font-family:var(--f-mincho);font-size:1.5cqw;color:var(--brand);font-weight:600}
+.pillar p{font-size:.98cqw;line-height:1.7;color:var(--sub)}
+.cantable{display:grid;grid-template-columns:repeat(4,1fr);gap:1.2cqw;margin-top:2cqw}
+.canitem{border-left:.22cqw solid var(--accent);padding-left:.9cqw}
+.canitem b{display:block;font-size:1.02cqw;color:var(--brand)}
+.canitem span{font-size:.88cqw;color:var(--sub)}
+.aicompare{display:grid;grid-template-columns:1fr 1fr;gap:1.6cqw;margin-top:2.2cqw}
+.aic{border:1px solid var(--line);padding:1.5cqw 1.7cqw;border-radius:2px}
+.aic.no{background:var(--paper-2)}
+.aic.yes{background:var(--band-dark);border-color:var(--band-dark)}
+.aic .at{font-family:var(--f-mono);font-size:.84cqw;letter-spacing:.14em;color:var(--faint)}
+.aic.yes .at{color:rgba(232,238,247,.6)}
+.aic h4{font-family:var(--f-mincho);font-size:1.34cqw;margin-top:.4cqw;color:var(--sub);font-weight:600}
+.aic.yes h4{color:#fff}
+.aic ul{list-style:none;margin-top:.9cqw;display:flex;flex-direction:column;gap:.45cqw}
+.aic li{font-size:.94cqw;color:var(--sub);padding-left:1cqw;position:relative}
+.aic.yes li{color:rgba(232,238,247,.88)}
+.aic li::before{content:"–";position:absolute;left:0;color:var(--faint)}
+.aic.yes li::before{content:"✓";color:var(--accent)}
+
+/* ============ 06 会社情報 & Next ============ */
+.s6 .cols{display:grid;grid-template-columns:1.15fr auto 1fr;gap:3cqw;margin-top:1.2cqw;margin-bottom:2.6cqw}
+.s6 .cl{font-family:var(--f-mono);font-size:.94cqw;letter-spacing:.24em;text-transform:uppercase;color:var(--faint);margin-bottom:1cqw}
+.about h3{font-family:var(--f-mincho);font-size:2.6cqw;color:var(--brand);font-weight:600;margin-bottom:1.4cqw}
+.tr{display:grid;grid-template-columns:6cqw 1fr;gap:1.4cqw;padding:1cqw 0;border-bottom:1px solid var(--line-2);align-items:baseline}
+.tr .k{font-size:.98cqw;color:var(--faint);display:flex;align-items:center;gap:.6cqw}
+.tr .v{font-size:1.1cqw;color:var(--ink);line-height:1.6;font-style:italic}
+.s6 .vdiv{width:2px;background:var(--accent)}
+.next h3{font-family:var(--f-mincho);font-size:2.4cqw;color:var(--brand);font-weight:600}
+.next p{font-size:1.08cqw;color:var(--sub);line-height:1.8;margin-top:.8cqw}
+.next .btn{display:block;text-decoration:none;text-align:center;font-family:var(--f-gothic);font-weight:700;font-size:1.3cqw;color:#fff;background:var(--brand);padding:1.2cqw 1.4cqw;border-radius:2px;margin-top:1.4cqw;box-shadow:0 12px 26px -10px rgba(30,58,107,.5)}
+.next .btn i{font-style:normal;color:var(--accent-soft);font-family:var(--f-mono)}
+.qrrow{display:flex;align-items:center;gap:1.2cqw;margin-top:1.6cqw}
+.qrbox{width:5.4cqw;height:5.4cqw;flex:0 0 auto;position:relative;background:var(--band);border:1px solid var(--line)}
+.qrbox i{position:absolute;width:1.1cqw;height:1.1cqw;border:2px solid var(--brand)}
+.qrbox i.a{top:.5cqw;left:.5cqw;border-right:none;border-bottom:none}
+.qrbox i.b{top:.5cqw;right:.5cqw;border-left:none;border-bottom:none}
+.qrbox i.c{bottom:.5cqw;left:.5cqw;border-right:none;border-top:none}
+.qrmeta span{display:block}
+.qrmeta .qt{font-family:var(--f-mono);font-size:.86cqw;letter-spacing:.14em;color:var(--faint)}
+.qrmeta .qv{font-size:.98cqw;color:var(--brand);font-weight:700;font-style:italic}
+.next .note{font-size:.94cqw;color:var(--sub);line-height:1.8;border-top:1px solid var(--line);margin-top:1.2cqw;padding-top:1cqw}
+.next .note b{color:var(--brand);font-weight:700}
+.s6 .steps{display:grid;grid-template-columns:1fr 2.6cqw 1fr 2.6cqw 1fr;gap:0;align-items:stretch;margin-top:2cqw;border-top:1px solid var(--line);padding-top:1.8cqw}
+.step{border-left:.24cqw solid var(--accent);padding:.2cqw 0 .2cqw 1.2cqw}
+.step .sn{font-family:var(--f-mono);font-size:.8cqw;letter-spacing:.2em;color:var(--faint);display:block}
+.step b{display:block;font-size:1.18cqw;color:var(--brand);font-weight:700;margin-top:.3cqw}
+.step .sd{display:block;font-size:.9cqw;color:var(--sub);margin-top:.25cqw}
+.s6 .sar{display:flex;align-items:center;justify-content:center;color:var(--accent);font-family:var(--f-mono);font-size:1.4cqw}
+.s6 .pricenote{font-size:.88cqw;color:var(--faint);line-height:1.6;margin-top:1.4cqw;text-align:center}
+
+/* 演出（画面のみ） */
+.deck.js .slide-wrap{opacity:0;transform:translateY(1.8vw)}
+.deck.js .slide-wrap.in{opacity:1;transform:none;transition:opacity .7s ease, transform .8s cubic-bezier(.2,.7,.2,1)}
+@media (prefers-reduced-motion:reduce){.deck.js .slide-wrap{opacity:1 !important;transform:none !important}}
+
+/* 印刷＝PDF（A4横） */
+@media print{
+  @page{ size:1122px 794px; margin:0 }
+  html,body{background:#fff}
+  .deck{background:none;padding:0;gap:0;display:block}
+  .slide-wrap{width:1122px !important;height:auto !important;max-width:none;overflow:visible;opacity:1 !important;transform:none !important;border-radius:0;box-shadow:none;break-inside:avoid}
+  .slide{transform:none !important;width:1122px;height:794px;border-radius:0;box-shadow:none;break-after:page}
+  .slide-wrap:last-child .slide{break-after:auto}
+}
+</style>
+
+<!-- ============ アイコン定義（スプライト） ============ -->
+<svg style="position:absolute;width:0;height:0;overflow:hidden" aria-hidden="true">
+<defs>
+<symbol id="i-user" viewBox="0 0 24 24"><circle cx="12" cy="8" r="4"/><path d="M4 20c0-4.4 3.6-7 8-7s8 2.6 8 7"/></symbol>
+<symbol id="i-briefcase" viewBox="0 0 24 24"><rect x="3" y="7" width="18" height="12" rx="1.5"/><path d="M8 7V5a1 1 0 0 1 1-1h6a1 1 0 0 1 1 1v2"/><line x1="3" y1="13" x2="21" y2="13"/></symbol>
+<symbol id="i-chat" viewBox="0 0 24 24"><path d="M4 5h16v11H10l-5 4V5z"/></symbol>
+<symbol id="i-code" viewBox="0 0 24 24"><path d="M9 6l-5 6 5 6M15 6l5 6-5 6"/></symbol>
+<symbol id="i-flag" viewBox="0 0 24 24"><line x1="6" y1="3" x2="6" y2="21"/><path d="M6 4h12l-3 4 3 4H6"/></symbol>
+<symbol id="i-chart" viewBox="0 0 24 24"><line x1="4" y1="20" x2="20" y2="20"/><polyline points="6,16 10,10 14,13 19,6"/></symbol>
+<symbol id="i-layers" viewBox="0 0 24 24"><polygon points="12,3 20,7.5 12,12 4,7.5"/><polyline points="4,12 12,16.5 20,12"/><polyline points="4,16.5 12,21 20,16.5"/></symbol>
+<symbol id="i-clock" viewBox="0 0 24 24"><circle cx="12" cy="12" r="8.5"/><polyline points="12,7 12,12 16,14"/></symbol>
+<symbol id="i-shield" viewBox="0 0 24 24"><path d="M12 3l7 3v6c0 5-3 8.5-7 9-4-.5-7-4-7-9V6l7-3z"/><polyline points="9,12 11,14 15,10"/></symbol>
+<symbol id="i-cpu" viewBox="0 0 24 24"><rect x="7" y="7" width="10" height="10" rx="1"/><line x1="9" y1="2" x2="9" y2="6"/><line x1="15" y1="2" x2="15" y2="6"/><line x1="9" y1="18" x2="9" y2="22"/><line x1="15" y1="18" x2="15" y2="22"/><line x1="2" y1="9" x2="6" y2="9"/><line x1="2" y1="15" x2="6" y2="15"/><line x1="18" y1="9" x2="22" y2="9"/><line x1="18" y1="15" x2="22" y2="15"/></symbol>
+<symbol id="i-db" viewBox="0 0 24 24"><ellipse cx="12" cy="6" rx="7" ry="3"/><path d="M5 6v12c0 1.7 3.1 3 7 3s7-1.3 7-3V6"/><path d="M5 12c0 1.7 3.1 3 7 3s7-1.3 7-3"/></symbol>
+<symbol id="i-mail" viewBox="0 0 24 24"><rect x="3" y="5" width="18" height="14" rx="1.5"/><polyline points="3,6 12,13 21,6"/></symbol>
+<symbol id="i-pin" viewBox="0 0 24 24"><circle cx="12" cy="10" r="3.2"/><path d="M12 21c3.4-4.4 6-7.7 6-11a6 6 0 1 0-12 0c0 3.3 2.6 6.6 6 11z"/></symbol>
+<symbol id="i-calendar" viewBox="0 0 24 24"><rect x="3" y="5" width="18" height="16" rx="1.5"/><line x1="3" y1="10" x2="21" y2="10"/><line x1="8" y1="3" x2="8" y2="7"/><line x1="16" y1="3" x2="16" y2="7"/></symbol>
+<symbol id="i-doc" viewBox="0 0 24 24"><path d="M6 3h9l5 5v13H6z"/><polyline points="15,3 15,8 20,8"/><line x1="9" y1="13" x2="17" y2="13"/><line x1="9" y1="17" x2="17" y2="17"/></symbol>
+<symbol id="i-camera" viewBox="0 0 24 24"><rect x="3" y="7" width="18" height="13" rx="1.5"/><path d="M8 7l1.5-3h5L16 7"/><circle cx="12" cy="13.5" r="3.5"/></symbol>
+<symbol id="i-bell" viewBox="0 0 24 24"><path d="M6 10a6 6 0 0 1 12 0c0 4 1.5 5.5 2 6.5H4c.5-1 2-2.5 2-6.5z"/><path d="M10 20a2 2 0 0 0 4 0"/></symbol>
+</defs>
+</svg>
+
+<main class="deck">
+
+  <!-- ============ 01 表紙 ============ -->
+  <div class="slide-wrap"><section class="slide s1">
+    <div class="topbar"></div>
+    <div class="glow"></div>
+    <div class="inner">
+      <div class="plabel">DOCUMENT REQUEST — 資料請求資料</div>
+      <h1 class="hero">AI社員を雇って、<br><span class="gd">DX</span>しませんか。</h1>
+      <div class="grule"></div>
+      <div class="sub">株式会社白石　資料請求資料 ― DXコンサル × Lark構築 × アプリ開発</div>
+      <div class="hook">現場は止めない。<span class="gd">“もう一人のAI社員”</span>と、DXだけ加速する。</div>
+      <div class="pillrow">
+        <div class="pill"><span class="icwrap accent"><svg class="ic"><use href="#i-briefcase"/></svg></span><div><b>DXコンサル</b><span>業務の棚卸しから伴走</span></div></div>
+        <div class="pill"><span class="icwrap accent"><svg class="ic"><use href="#i-chat"/></svg></span><div><b>Lark構築</b><span>情報を1つに集約</span></div></div>
+        <div class="pill"><span class="icwrap accent"><svg class="ic"><use href="#i-code"/></svg></span><div><b>アプリ開発</b><span>必要な分だけ専用実装</span></div></div>
+      </div>
+      <div class="btm">
+        <div class="to">［ご請求企業名］　［ご担当部署・お名前］　様
+          <span class="from">この度は資料をご請求いただき、誠にありがとうございます。</span>
+          <span class="date">株式会社白石　／　［提案年月：YYYY.MM］</span>
+        </div>
+        <div class="logo">白石<small>［正式ロゴに差し替え可］</small></div>
+      </div>
+    </div>
+  </section></div>
+
+  <!-- ============ 02 事業紹介・代表挨拶 ============ -->
+  <div class="slide-wrap"><section class="slide s2">
+    <div class="chrome"><span class="kick">About &amp; Founder — 事業紹介・代表挨拶</span><span class="pg"><b>02</b> — 06</span></div>
+    <div class="subkick">株式会社白石／現場に強く、経営に効くDXパートナー</div>
+    <h1 class="head" style="margin-top:1cqw">現場の“当たり前”を、次の一手に変える。</h1>
+    <div class="lead">DXコンサルティング・Lark構築・アプリ開発。三つの力を掛け合わせ、“現場”と“経営”の両方に効くDXを実現します。</div>
+    <div class="rule"></div>
+    <div class="cards3">
+      <div class="card3">
+        <div><span class="no">01</span><span class="en">DX Consulting</span></div>
+        <h3>DXコンサル</h3><div class="hr"></div>
+        <p>業務を棚卸しし、費用対効果の高い一手から着手。導入後の定着まで伴走します。</p>
+        <div class="chips"><span class="chip">業務設計</span><span class="chip">定着支援</span></div>
+      </div>
+      <div class="card3">
+        <div><span class="no">02</span><span class="en">Lark Construction</span></div>
+        <h3>Lark構築</h3><div class="hr"></div>
+        <p>チャット・データ・ワークフローをLarkひとつに集約し、情報の分断をなくします。</p>
+        <div class="chips"><span class="chip">Lark</span><span class="chip">ワークフロー</span></div>
+      </div>
+      <div class="card3">
+        <div><span class="no">03</span><span class="en">App Development</span></div>
+        <h3>アプリ開発</h3><div class="hr"></div>
+        <p>既製ツールで届かない業務は、必要な分だけ専用アプリを開発して応えます。</p>
+        <div class="chips"><span class="chip">受発注</span><span class="chip">AI-OCR</span></div>
+      </div>
+    </div>
+    <div class="featrow">
+      <div class="featbadge"><span class="icwrap"><svg class="ic"><use href="#i-flag"/></svg></span><div><b>現場に強い</b><span>実務のボトルネックを直接ヒアリング</span></div></div>
+      <div class="featbadge"><span class="icwrap"><svg class="ic"><use href="#i-chart"/></svg></span><div><b>経営に強い</b><span>数字で判断できる意思決定基盤づくり</span></div></div>
+      <div class="featbadge"><span class="icwrap"><svg class="ic"><use href="#i-layers"/></svg></span><div><b>充実した開発基盤</b><span>速く・高品質に実装できる自社基盤</span></div></div>
+    </div>
+    <div class="founder">
+      <div class="photo-ph"><svg class="ic"><use href="#i-user"/></svg></div>
+      <div class="fmeta">
+        <span class="fkick">Founder's Message — 代表挨拶</span>
+        <b>代表取締役　［氏名］</b>
+        <span class="role">株式会社白石</span>
+        <p class="fquote">［ここに代表からのご挨拶文を入力してください。創業の想い、大切にしていること、これから提供したい価値、今後のビジョンなどを2〜3文でまとめます。］</p>
+        <span class="ph-note">※ 代表者写真は左のプレースホルダーに差し替えてください</span>
+      </div>
+    </div>
+    <div class="foot" style="margin-top:1cqw"><span>株式会社白石</span><span>資料請求資料</span></div>
+  </section></div>
+
+  <!-- ============ 03 実績紹介 ============ -->
+  <div class="slide-wrap"><section class="slide s3">
+    <div class="chrome"><span class="kick">Track record — 実績紹介</span><span class="pg"><b>03</b> — 06</span></div>
+    <h1 class="head" style="margin-top:1.6cqw">警備会社の月次シフト管理を、<span class="gd">5分</span>で完成させた。</h1>
+    <div class="subline"><b>施設警備会社（シフト管理）</b><span>担当者が毎月手作業で組んでいた勤務シフト表を、Lark上のワークフローに置き換え。</span></div>
+    <div class="herokpi">
+      <div class="box"><span class="v">5<small>分</small></span><span class="t">月次シフト表の作成時間</span><span class="d">Lark上のテンプレート化フローで完成</span></div>
+      <div class="side">
+        <div class="bahead"><span>項目</span><span>Before</span><span></span><span>After</span></div>
+        <div class="barow"><span class="item">シフト作成</span><span class="bef">［従来の所要時間：要確認］手作業で作成</span><span class="ar">→</span><span class="aft">Larkで自動集約・5分で完成</span></div>
+      </div>
+    </div>
+    <div class="closing"><b>単なる時短ではありません。</b>　属人化していたシフト作成を、誰でも回せる仕組みに変える ― これが、私たちが最も得意とする領域です。</div>
+    <div class="mechhead">HOW IT WORKS — 導入の仕組み</div>
+    <div class="mechrow">
+      <div class="mech"><span class="mn">STEP 01</span><b>テンプレート化</b><span class="d">シフトのパターンをLark上にテンプレート登録</span></div>
+      <div class="mecharrow">→</div>
+      <div class="mech"><span class="mn">STEP 02</span><b>チャットで入力</b><span class="d">現場からの希望・条件をチャットで送信</span></div>
+      <div class="mecharrow">→</div>
+      <div class="mech"><span class="mn">STEP 03</span><b>自動で反映</b><span class="d">入力内容が自動集計され、シフト表に反映</span></div>
+    </div>
+    <div class="applyhead">ALSO APPLICABLE TO — 同じ考え方が活きる業務例</div>
+    <div class="applyrow">
+      <div class="card3"><div class="ptop"><span class="icwrap ghost"><svg class="ic"><use href="#i-clock"/></svg></span><h4>勤怠・工数の集計</h4></div><p>各拠点からの打刻・報告をLarkに集約し、集計作業を自動化。</p></div>
+      <div class="card3"><div class="ptop"><span class="icwrap ghost"><svg class="ic"><use href="#i-doc"/></svg></span><h4>日報・報告書</h4></div><p>チャットで送るだけで、体裁の整った日報・週報を作成。</p></div>
+      <div class="card3"><div class="ptop"><span class="icwrap ghost"><svg class="ic"><use href="#i-bell"/></svg></span><h4>発注・在庫の通知</h4></div><p>在庫の閾値や発注タイミングをチャットで自動通知。</p></div>
+    </div>
+    <div class="foot"><span>株式会社白石</span><span>資料請求資料</span></div>
+  </section></div>
+
+  <!-- ============ 04 Lark導入シミュレーション ============ -->
+  <div class="slide-wrap"><section class="slide s4">
+    <div class="chrome"><span class="kick">Lark simulation — Lark導入効果シミュレーション</span><span class="pg"><b>04</b> — 06</span></div>
+    <h1 class="head" style="margin-top:1.6cqw">営業人員 × 業種で見る、<span class="gd">Lark導入の改善イメージ。</span></h1>
+    <div class="lead">貴社の体制に近い実例をもとに、Lark導入による改善額の目安をご案内します（数値はイメージ例です）。</div>
+    <div class="simtable">
+      <div class="simhead"><span>業種</span><span>営業人員</span><span>改善額の目安（月間）</span></div>
+      <div class="simrow"><span>［業種 例：建設業］</span><span class="ph">［◯名］</span><span class="ph">［改善額目安：要算出］</span></div>
+      <div class="simrow"><span>［業種 例：製造業］</span><span class="ph">［◯名］</span><span class="ph">［改善額目安：要算出］</span></div>
+      <div class="simrow"><span>［業種 例：小売業］</span><span class="ph">［◯名］</span><span class="ph">［改善額目安：要算出］</span></div>
+      <div class="simrow"><span>［業種 例：IT・情報サービス業］</span><span class="ph">［◯名］</span><span class="ph">［改善額目安：要算出］</span></div>
+      <div class="simrow now"><span>貴社の場合</span><span class="ph">［ご記入ください］</span><span class="ph">お打ち合わせにて算出</span></div>
+    </div>
+    <div class="simpoints">
+      <div class="simpoint"><span class="icwrap ghost"><svg class="ic"><use href="#i-doc"/></svg></span><p><b>転記作業の削減</b>情報をLarkに一元化し、二重入力・転記の手間をなくします。</p></div>
+      <div class="simpoint"><span class="icwrap ghost"><svg class="ic"><use href="#i-chat"/></svg></span><p><b>承認の即時化</b>チャット完結の承認フローで、意思決定のスピードを高めます。</p></div>
+      <div class="simpoint"><span class="icwrap ghost"><svg class="ic"><use href="#i-shield"/></svg></span><p><b>ヒューマンエラー減</b>案件・顧客情報をリアルタイム共有し、抜け漏れを防ぎます。</p></div>
+    </div>
+    <div class="assume">
+      <div class="ahead">SIMULATION BASIS — 算出の考え方</div>
+      <ul>
+        <li><b>対象業務：</b>案件・顧客管理、日報、承認申請にかかる時間</li>
+        <li><b>算出方法：</b>作業時間の削減分 × 人件費単価で試算</li>
+        <li><b>前提条件：</b>貴社の営業人員数・業務フローをヒアリングして設定</li>
+      </ul>
+    </div>
+    <div class="disc">※ 上表の改善額は試算例であり、確定した効果を保証するものではありません。実際の改善額は、貴社の業務量・体制をヒアリングのうえ個別に算出します。</div>
+    <div class="foot"><span>株式会社白石</span><span>資料請求資料</span></div>
+  </section></div>
+
+  <!-- ============ 05 DXOneの紹介 ============ -->
+  <div class="slide-wrap"><section class="slide s5">
+    <div class="chrome"><span class="kick">Our solution — DXOneの紹介</span><span class="pg"><b>05</b> — 06</span></div>
+    <h1 class="head" style="margin-top:1.6cqw">バックオフィスを、<span class="gd">“もう一人のAI社員”</span>に。</h1>
+    <div class="lead">生成AI・AI-OCRを搭載した統合業務基盤「中小企業DX One」を、Lark基盤の上に構築します。</div>
+    <div class="pillargrid">
+      <div class="pillar">
+        <div class="ptop"><span class="icwrap"><svg class="ic"><use href="#i-chat"/></svg></span><span class="en">TALK</span></div>
+        <h3>話しかける窓口</h3>
+        <p>Larkのチャットに指示するだけ。PC・スマホどちらでも、承認や通知もチャットに届きます。</p>
+      </div>
+      <div class="pillar">
+        <div class="ptop"><span class="icwrap"><svg class="ic"><use href="#i-db"/></svg></span><span class="en">DATA</span></div>
+        <h3>業務データ基盤</h3>
+        <p>顧客・案件・受注・請求・入金、社員・勤怠、タスク・議事録・経費など、41表で一元管理。</p>
+      </div>
+      <div class="pillar">
+        <div class="ptop"><span class="icwrap"><svg class="ic"><use href="#i-shield"/></svg></span><span class="en">SAFETY</span></div>
+        <h3>安全のしくみ</h3>
+        <p>AIは勝手に確定しません。人の承認を経て実行し、すべての操作に記録が残ります。</p>
+      </div>
+    </div>
+    <div class="cantable">
+      <div class="canitem"><b>チャット起票</b><span>商談・問合せの文面から、顧客・案件を下書き</span></div>
+      <div class="canitem"><b>議事録の要約</b><span>決定事項・宿題を整理してタスク化</span></div>
+      <div class="canitem"><b>領収書のAI-OCR読取</b><span>写真から日付・金額・費目を抽出</span></div>
+      <div class="canitem"><b>期限・確認待ちの通知</b><span>近い期限・未承認をチャットで通知</span></div>
+    </div>
+    <div class="aicompare">
+      <div class="aic no">
+        <span class="at">よくある“AIアシスタント”</span>
+        <h4>一人に付く、個人のツール</h4>
+        <ul>
+          <li>一人の利用者が指示を出す</li>
+          <li>結果は、その人に返ってくる</li>
+          <li>やり取りは個人の中で終わる</li>
+        </ul>
+      </div>
+      <div class="aic yes">
+        <span class="at">DX Oneの“AI社員”</span>
+        <h4>会社の中で働く、もう一人の社員</h4>
+        <ul>
+          <li>複数の人が働くLarkの中に席がある</li>
+          <li>人と人の間に入り、仕事を次の人へ渡す</li>
+          <li>結果が会社の業務データ基盤に残る</li>
+        </ul>
+      </div>
+    </div>
+    <div class="disc">※ 料金・補助金の活用については個別にご案内します。「中小企業DX One」は株式会社ユニクス提供・合同会社みやび開発の製品です。白石ではLark構築とあわせた導入・運用をご支援します。</div>
+    <div class="foot"><span>株式会社白石</span><span>資料請求資料</span></div>
+  </section></div>
+
+  <!-- ============ 06 会社情報 & Next ============ -->
+  <div class="slide-wrap"><section class="slide s6">
+    <div class="chrome"><span class="kick">Company &amp; next step — 会社情報・お問い合わせ</span><span class="pg"><b>06</b> — 06</span></div>
+    <h1 class="head" style="margin-top:1.4cqw">まずは30分。<span class="gd">DXの論点を、</span>一緒に。</h1>
+    <div class="lead">AI・DXのお悩みは、まだ漠然としていて構いません。まずはお気軽にお問い合わせください。</div>
+    <div class="rule"></div>
+    <div class="cols">
+      <div class="about">
+        <div class="cl">Company</div>
+        <h3>株式会社白石</h3>
+        <div class="tr"><span class="k"><svg class="ic" style="stroke:var(--faint);width:1.1cqw;height:1.1cqw"><use href="#i-user"/></svg>代表</span><span class="v">代表取締役　［氏名］</span></div>
+        <div class="tr"><span class="k"><svg class="ic" style="stroke:var(--faint);width:1.1cqw;height:1.1cqw"><use href="#i-briefcase"/></svg>事業</span><span class="v" style="font-style:normal">DXコンサルティング／Lark構築／アプリ開発</span></div>
+        <div class="tr"><span class="k"><svg class="ic" style="stroke:var(--faint);width:1.1cqw;height:1.1cqw"><use href="#i-mail"/></svg>連絡先</span><span class="v">TEL：［000-0000-0000］／Email：［info@example.com］</span></div>
+        <div class="tr"><span class="k"><svg class="ic" style="stroke:var(--faint);width:1.1cqw;height:1.1cqw"><use href="#i-pin"/></svg>所在地</span><span class="v">［本社所在地］</span></div>
+        <div class="tr"><span class="k"><svg class="ic" style="stroke:var(--faint);width:1.1cqw;height:1.1cqw"><use href="#i-clock"/></svg>受付時間</span><span class="v">［平日 9:00〜18:00 等］</span></div>
+        <div class="tr" style="border-bottom:none"><span class="k"><svg class="ic" style="stroke:var(--faint);width:1.1cqw;height:1.1cqw"><use href="#i-calendar"/></svg>設立</span><span class="v">［設立年月］</span></div>
+      </div>
+      <div class="vdiv"></div>
+      <div class="next">
+        <div class="cl">Next step</div>
+        <h3>打ち合わせのご予約</h3>
+        <p>ご都合の良い日程を、下記よりご予約ください。準備・持ち物は不要です。</p>
+        <a class="btn" href="#">打ち合わせを予約する　<i>［予約URLに差し替え］</i>　→</a>
+        <div class="qrrow">
+          <div class="qrbox"><i class="a"></i><i class="b"></i><i class="c"></i></div>
+          <div class="qrmeta"><span class="qt">SCAN TO BOOK</span><span class="qv">［QRコード：打ち合わせ予約URLに差し替え］</span></div>
+        </div>
+        <div class="note">こんなご相談も歓迎です：<b>「Larkって何？」から知りたい／費用感だけ先に知りたい／他社の導入事例を聞きたい。</b><br>この資料は、そのまま社内へご転送いただけます。</div>
+      </div>
+    </div>
+    <div class="steps">
+      <div class="step"><span class="sn">STEP 01</span><b>資料のご確認</b><span class="sd">貴社の課題感を整理いただく</span></div>
+      <div class="sar">→</div>
+      <div class="step"><span class="sn">STEP 02</span><b>30分の打ち合わせ</b><span class="sd">現状ヒアリングと論点整理</span></div>
+      <div class="sar">→</div>
+      <div class="step"><span class="sn">STEP 03</span><b>ご提案・お見積り</b><span class="sd">貴社に合わせた実行プランをご提示</span></div>
+    </div>
+    <div class="pricenote">※ お見積りは、貴社の業務内容・規模に応じて個別にご案内します。</div>
+    <div class="foot"><span>株式会社白石</span><span>資料請求資料</span></div>
+  </section></div>
+
+</main>
+
+<script>
+(function(){
+  var wraps=[].slice.call(document.querySelectorAll('.slide-wrap'));
+  function fit(){
+    for(var i=0;i<wraps.length;i++){
+      var w=wraps[i], s=w.querySelector('.slide');
+      if(!s){continue;}
+      var sc=w.clientWidth/1122;
+      s.style.transform='scale('+sc+')';
+      w.style.height=(794*sc)+'px';
+    }
+  }
+  fit();
+  if(window.addEventListener){window.addEventListener('resize',fit);window.addEventListener('load',fit);}
+  if('ResizeObserver' in window){try{new ResizeObserver(fit).observe(document.documentElement);}catch(e){}}
+  setTimeout(fit,60); setTimeout(fit,300);
+  var deck=document.querySelector('.deck'); if(!deck) return;
+  var revealAll=function(){wraps.forEach(function(w){w.classList.add('in');});};
+  var reduce=window.matchMedia&&window.matchMedia('(prefers-reduced-motion:reduce)').matches;
+  if(reduce||!('IntersectionObserver' in window)){return;}
+  deck.classList.add('js');
+  try{
+    var io=new IntersectionObserver(function(es){
+      es.forEach(function(e){if(e.isIntersecting){e.target.classList.add('in');io.unobserve(e.target);}});
+    },{threshold:.1,rootMargin:'0px 0px -8% 0px'});
+    wraps.forEach(function(w){io.observe(w);});
+  }catch(err){revealAll();}
+  setTimeout(revealAll,1600);
+})();
+</script>
